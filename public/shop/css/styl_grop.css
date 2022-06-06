@@ -1,0 +1,366 @@
+
+.section_grop {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  width: 100%;
+  height: auto;
+}
+.section_grop1 {
+  width: 80%;
+  height: auto;
+}
+.section_grop2 {
+  width: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.section_grop2 div {
+  padding: 10px;
+}
+.section_grop2_1 {
+  width: 100%;
+  direction: rtl;
+}
+.section_grop2_2 {
+  direction: rtl;
+  width: 100%;
+}
+.tab-pane ul {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+.tab-pane ul li {
+  width: 260px;
+  height: 400px;
+  position: relative;
+  box-shadow: 0 0 16px #b7b7b7;
+  padding: 12px;
+  transition: all .6s;
+  margin: 8px 10px 8px 10px;
+}
+.tab-content ul li:hover{
+  background-color: #cecece;
+}
+.price {
+  position: absolute;
+  bottom: 34px;
+  right: 8px;
+}
+.tab-content ul li a {
+  position: absolute;
+  left: 8px;
+}
+
+.tab-content ul li div i {
+  font-size: 35px;
+  vertical-align: -26px;
+  margin-right: 7px;
+}
+.grop_dasta {
+  direction: rtl;
+  width: 100%;
+}
+.grop_dasta li a {
+  color: #ed5314;
+}
+.nav-tabs .nav-link {
+  color: #262626;
+  border-bottom: solid 2px #262626;
+}
+.nav-tabs .nav-link.active {
+  border-top: solid 2px #ed5314;
+  color: #ed5314;
+}
+.grop_search {
+  display: flex;
+}
+.grop_search1 {
+  width: 150px;
+  height: 30px;
+  background: #ecebeb;
+  margin: 0;
+  color: #707070;
+  text-align: right;
+  line-height: 20px;
+  font-size: 12px;
+  padding: 2px 10px 0 0;
+}
+.grop_search2 {
+  height: 30px;
+  width: 45px;
+  margin: 0;
+  background: #ed5314;
+  border-radius: 8px 0 0 8px;
+  transition: all 0.4s;
+}
+.grop_search2:hover {
+  border: 1px solid #ed5314;
+  background: #262626;
+  color: #ed5314;
+}
+.grop_search2 i {
+  vertical-align: -2px;
+}
+.section1_1_grop ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+/* Normal Track */
+input[type="checkbox"].ios-switch + div {
+  vertical-align: middle;
+  width: 40px;
+  height: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-property: background-color, box-shadow;
+  box-shadow: inset 0 0 0 0px rgba(0, 0, 0, 0.4);
+  margin: 10px 1.2em 0px 2.5em;
+  cursor: pointer;
+}
+
+/* Checked Track (Blue) */
+input[type="checkbox"].ios-switch:checked + div {
+  width: 40px;
+  background-position: 0 0;
+  background-color: #ed5314;
+  border: 1px solid #ed5314;
+  box-shadow: inset 0 0 0 10px rgb(229, 93, 63);
+}
+
+/* Tiny Track */
+input[type="checkbox"].tinyswitch.ios-switch + div {
+  width: 34px;
+  height: 18px;
+}
+
+/* Big Track */
+input[type="checkbox"].bigswitch.ios-switch + div {
+  width: 50px;
+  height: 25px;
+}
+
+/* Normal Knob */
+input[type="checkbox"].ios-switch + div > div {
+  float: left;
+  width: 18px;
+  height: 18px;
+  border-radius: inherit;
+  background: #ffffff;
+  -webkit-transition-timing-function: cubic-bezier(0.54, 1.85, 0.5, 1);
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-property: transform, background-color, box-shadow;
+  -moz-transition-timing-function: cubic-bezier(0.54, 1.85, 0.5, 1);
+  -moz-transition-duration: 0.4s;
+  -moz-transition-property: transform, background-color;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  margin-top: -10px;
+  margin-left: -11px;
+}
+
+/* Checked Knob (Blue Style) */
+input[type="checkbox"].ios-switch:checked + div > div {
+  -webkit-transform: translate3d(20px, 0, 0);
+  -moz-transform: translate3d(20px, 0, 0);
+  background-color: #ffffff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgb(255, 117, 81);
+}
+
+/* Tiny Knob */
+input[type="checkbox"].tinyswitch.ios-switch + div > div {
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+}
+
+/* Checked Tiny Knob (Blue Style) */
+input[type="checkbox"].tinyswitch.ios-switch:checked + div > div {
+  -webkit-transform: translate3d(16px, 0, 0);
+  -moz-transform: translate3d(16px, 0, 0);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172, 1);
+}
+
+/* Big Knob */
+input[type="checkbox"].bigswitch.ios-switch + div > div {
+  width: 23px;
+  height: 23px;
+  margin-top: 1px;
+}
+
+/* Checked Big Knob (Blue Style) */
+input[type="checkbox"].bigswitch.ios-switch:checked + div > div {
+  -webkit-transform: translate3d(25px, 0, 0);
+  -moz-transform: translate3d(16px, 0, 0);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3), 0px 0px 0 1px rgba(8, 80, 172, 1);
+}
+.svg {
+  display: none;
+}
+.svg2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 16px 0 0 0;
+  box-shadow: 0 0 5px #c8c8c8;
+  height: 86%;
+}
+.svg2 img {
+  height: 140px;
+}
+
+.nav-link {
+  display: block;
+  padding: 11px;
+}
+
+/* 
+<div class="section1">
+<div class="section1_1">
+  <ul>
+    <li>
+      <div class="section1_1_img1"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+    <li>
+      <div class="section1_1_img2"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+    <li>
+      <div class="section1_1_img3"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+    <li>
+      <div class="section1_1_img3"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+  </ul>
+</div>
+</div>
+<div class="section1">
+<div class="section1_1">
+  <ul>
+    <li>
+      <div class="section1_1_img1"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+    <li>
+      <div class="section1_1_img2"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+    <li>
+      <div class="section1_1_img3"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+    <li>
+      <div class="section1_1_img3"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+  </ul>
+</div>
+</div>
+
+<div class="section1">
+<div class="section1_1">
+  <ul>
+    <li>
+      <div class="section1_1_img1"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+    <li>
+      <div class="section1_1_img2"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+    <li>
+      <div class="section1_1_img3"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+    <li>
+      <div class="section1_1_img3"></div>
+      <p>بنرد معتبر از شرکت هواوی با بهترین قیمت در بازار</p>
+      <a href="by.html"
+        ><div class="section1_1_by">
+          <i class="material-icons-outlined">shopping_cart</i>
+        </div></a
+      >
+      <span class="price">24000$</span>
+    </li>
+  </ul>
+</div>
+</div> */

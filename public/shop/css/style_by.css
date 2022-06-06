@@ -1,0 +1,145 @@
+section{
+    direction: rtl;
+}
+.section1{
+    display: flex;
+    width: 85%;
+    margin: 40px auto;
+    box-shadow:0 5px 25px #a09f9f;
+    position: relative;
+}
+.section1_2{
+    width: 45%;
+}
+.section1_2 img{
+    width: 85%;
+    height: 75%;
+    margin-top: 60px;
+}
+.section1_1{
+    width: 65%;
+    height: 420px;
+    padding: 30px 35px 0 0;
+}
+.main_by,.add_shop_box{
+    background: #262626;
+    color: #ed5314;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all .4s;
+    margin:  2px;
+}
+.main_by i , .add_shop_box i{
+    font-size: 30px;
+    vertical-align: -10px;
+    margin: 0 6px 0 0;
+}
+.main_by:hover , .add_shop_box:hover{
+    background:#ed5314;
+    color:#262626;
+}
+.by_section2{
+    width: 50%;
+    margin: 40px auto;
+    background: #262626;
+    color: #ed5314;
+    padding: 20px;
+    border: #ed5314 2px solid;
+    box-shadow:0 5px 25px #a09f9f;
+    font-weight: bold;
+    display: none;
+}
+
+.by_section2  input{
+    width: 65%;
+}
+
+.by_section2 button ,.section3_by input{
+    width: 100px;
+    height: 35px;
+    background: #262626;
+    color: #ed5314;
+    border:2px solid #ed5314;
+    cursor: pointer;
+    margin: 0 8px 0 0;
+    transition: all .4s;
+}
+.by_section2 button:hover{
+    background: #ed5314;
+    color: #262626;
+    border:2px solid #262626;
+}
+.slide_toch3 ul li img{
+	margin:0;
+}
+
+.slide_toch3 ul li img:hover{
+	transform: none;
+    border-radius: 0;
+}
+.login_erore2{
+    display: none;
+    margin:20px 10px 0 0 ;
+}
+
+.section3_by div{
+    padding: 20px;
+} 
+.nav-tabs .nav-link {
+    color: #262626;
+    border-top:solid 2px #262626 ;
+}
+.nav-tabs .nav-link.active {
+    border-top:solid 2px #ed5314 ;
+    color: #ed5314;
+}
+.section3_by ul li a span{
+  vertical-align: -8px;
+}
+
+.tab-content table tr{
+  transition: all .3s;
+}
+.tab-content table tr:hover{
+    background: #363636;
+    color: #ed5314;
+}
+.section3_by div input{
+    margin: 12px;
+}
+.progress{
+    width: 60%;
+    display: flex;
+}
+.progress div{ 
+    padding: 10px 10px 0 0;
+}
+.nazar{
+    display: flex;
+    justify-content: flex-start;
+    width: 85%;
+}
+.nazar1{
+    width: 100px;
+    height: 100px;
+    border: #7c7c7c 2px solid;
+    border-radius: 50%;
+    margin: 0 0 0 10px;
+}
+.nazar2{
+    width: 85%;
+    height: 160px;
+    border: #c5c3c3 2px solid;
+    border-radius: 8px;
+}
+ 
+.svg{
+    margin: 20px 0 40PX 0;
+}
+.nav-tabs .nav-item {
+    margin-bottom: 8px;
+}.nav-link {
+    display: block;
+    padding: 10px;
+}
