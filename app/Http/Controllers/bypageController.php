@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
 
 
@@ -56,7 +57,6 @@ class bypageController extends Controller
         return redirect()->back();
     }
     public function add_shop_box(Request $request){
-       
         $user = User::find($request->user);
         $array =json_decode($user->box_product_id);
         array_push($array,$request->product);
@@ -64,5 +64,7 @@ class bypageController extends Controller
         User::find($request->user)->update([
             'box_product_id'=>$array
         ]);
+        $user = User::find($request->user);
+        session(['User' => $user]);
     }
 }

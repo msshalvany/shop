@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,7 +15,7 @@ class UserController extends Controller
         $inpute = $req->only('email', 'password');
         $user = User::where('email', $inpute['email'])->where('password', $inpute['password'])->first();
         if ($user) {
-            session(['User' => ['id' => $user->id, 'username' => $user->username, 'email' => $user->email, 'password' => $user->password, 'image' => $user->image,'box_product_id'=>$user->box_product_id]]);
+            session(['User' => $user]);
             return 1;
         } else {
             return 0;

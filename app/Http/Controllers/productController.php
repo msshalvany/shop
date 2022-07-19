@@ -193,4 +193,22 @@ class productController extends Controller
         $productBy= Product::where('category',$category)->orderBy('byed','desc')->paginate(9);
         return view('shop.category',['categoryNumber'=>$categoryNumber,'productDis'=>$productDis,'productExpi'=>$productExpi,'productBy'=>$productBy,'productChi'=>$productChi]);
     }
+    public function del_pro_box(Request $request)
+    {
+       $box_product_id  =json_decode(User::find($request->user)->box_product_id);
+       $i = 0;
+       foreach ($box_product_id as $item) {
+            if ($item->id==$request->pro) {
+                unset($box_product_id[$i]);
+                $box_product_id = array_values($box_product_id);
+                User::find($request->user)->update([
+                    'box_product_id'=>json_encode($box_product_id)
+                ]);
+                $user = User::find($request->user);
+                session(['User' => $user]);
+                break;
+            }
+            $i++;
+       }
+    }
 }

@@ -35,10 +35,15 @@
                                 url: "/bypage/add_shop_box",
                                 data: {
                                     user:{{session()->get('User')['id']}},
-                                    product:{{ $product->id }},
+                                    product:{
+                                       'id' :{{ $product->id }},
+                                       'name' : '{{ $product->name }}',
+                                       'image' : '{{ $product->image }}'
+                                    },
                                 },
                                 success: function (response) {
                                     alert('عملیات موفق')
+                                    document.location.reload(true)
                                 }
                             });
                         });

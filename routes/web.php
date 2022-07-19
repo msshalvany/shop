@@ -54,6 +54,7 @@ Route::get('/bypage/{id}', [bypageController::class, 'index'])->where('id', '[0-
 Route::put('/byed/{id}', [bypageController::class, 'by'])->where('id', '[0-9]+')->name('byed');
 Route::put('/by/{id}', [bypageController::class, 'idia'])->where('id', '[0-9]+')->name('setidia');
 Route::post('/bypage/add_shop_box', [bypageController::class, 'add_shop_box'])->name('add_shop_box');
+Route::post('/del_pro_box', [productController::class, 'del_pro_box'])->name('del_pro_box');
 //---------------------shop---------------------//
 Route::fallback(function () {
     return view('shop.404');

@@ -61,6 +61,18 @@ li {
 header {
     direction: rtl;
 }
+.list-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.list-box li{
+    width: -webkit-fill-available;
+}
+.list-box li i{
+    vertical-align: -16px;
+    margin: 0 7px 0 0;
+}
 .header_nav_top {
     width: 100%;
     height: 42px;
@@ -651,6 +663,7 @@ footer {
     z-index: 100;
     border: #ed5314 2px solid;
     display: none;
+    overflow: auto;
 }
 
 .login2 {
@@ -684,6 +697,21 @@ footer {
     transition: all 0.4s;
 }
 .button_login2:hover {
+    background: #ed5314;
+    color: #262626;
+    border: 2px solid #262626;
+}
+.del-pro-box{
+    width: 95px;
+    height: 35px;
+    background: #262626;
+    color: #ed5314;
+    border: 2px solid #ed5314;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: all 0.4s;
+}
+.del-pro-box:hover {
     background: #ed5314;
     color: #262626;
     border: 2px solid #262626;
@@ -787,20 +815,14 @@ footer {
     text-decoration: none;
 }
 .cancel_shop_bax{
-    width: 95px;
-    height: 35px;
-    background: #262626;
     color: #ed5314;
-    position: absolute;
-    right: 130px;
-    bottom: 15px;
-    border: 2px solid #ed5314;
+    position: fixed;
+    border: none;
+    font-size: 40px;
     cursor: pointer;
-    margin-top: 12px;
+    top: inherit;
     transition: all 0.4s;
 }
 .cancel_shop_bax:hover {
-    background: #ed5314;
-    color: #262626;
-    border: 2px solid #262626;
+    color: red;
 }

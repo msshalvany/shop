@@ -14,9 +14,44 @@
 <body>
     <!--===================head============================-->
     <header>
+        @php
+        if (session()->get('User')) {
+            $box_product =json_decode(session()->get('User')->box_product_id);
+        }
+        @endphp
+        @if (session()->get('User'))
+            
+      
         <div class="box_shop">
-           <button class="cancel_shop_bax">cancle</button>
+            <div class="cancel_shop_bax">&bigotimes;</div>
+           @foreach ($box_product as $item)
+               <ul class="list-box">
+                    <li>{{$item->name}}</li>
+                    <li><img width="120px" height='120px' src="{{$item->image}}" alt=""></li>
+                    <li><button id="{{$item->id}}" class="del-pro-box">حدف</button></li>
+               </ul>
+           @endforeach
+           @empty($box_product)
+              <div style="margin: 28px 40px 0 0"> موردی سافت نشد</div>
+           @endempty
+           <script>
+                $('.del-pro-box').click(function (e) { 
+                    e.preventDefault();
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('del_pro_box') }}",
+                        data: {
+                            user:{{session()->get('User')->id}},
+                            pro:e.target.id
+                        },
+                        success: function (response) {
+                           $(`#${e.target.id}`).parent().parent().fadeOut();
+                        }
+                    });
+                });
+           </script>
         </div>
+        @endif
         <div style="height: 325px" class="login2" id="login2">
             <form method="POST" action="{{ route('LoginUser') }}">
                 @csrf
@@ -94,8 +129,10 @@
         <div class="header_section">
             <div class="header_section_right">
                 <div class="header_by">
-                    <div class="header_by1">2</div>
-                    <div class="header_by2">سبد خرید<i class="material-icons-outlined">shopping_cart</i></div>
+                    @if (session()->get('User'))
+                        <div class="header_by1">2</div>
+                        <div class="header_by2">سبد خرید<i class="material-icons-outlined">shopping_cart</i></div>
+                    @endif
                     <div class="add loginlink"><a href="{{ route('RegesterUser') }}"> ثبت نام و عضویت</a><i style="vertical-align: -8px; margin-right: 6px;"
                             class="material-icons-outlined ">person_add</i></div>
                 </div>
