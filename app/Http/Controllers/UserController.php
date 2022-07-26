@@ -83,4 +83,8 @@ class UserController extends Controller
        }
        
     }
+    public function get_pro_box(Request $request)
+    {
+        return User::find($request->id)->box_product_id;
+    }
 }

@@ -2,6 +2,18 @@
     font-family: vazir;
     src: url("../font/Vazir.woff") format("woff");
 }
+::-webkit-scrollbar {
+    width:15px;
+    background-color:#cedbe8;
+  
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0px -1px 13px #ed5314;
+}
+::-webkit-scrollbar-thumb {
+    background: #ed5314;
+    border-radius: 10px;
+}
 .madia {
     width: 80px;
     height: 30px;
@@ -157,6 +169,14 @@ header {
     line-height: 40px;
     transition: all 0.4s;
 }
+.link-recovery-pasword{
+    color: #ed5314;
+    position: relative;
+    left: 12px;
+}
+.link-recovery-pasword:hover{
+    color: #ed5314;
+}
 .add {
     display: none;
     width: auto;
@@ -265,6 +285,10 @@ header {
     cursor: pointer;
 }
 a {
+    text-decoration: none;
+    color: #111111;
+}
+a:hover {
     text-decoration: none;
     color: #111111;
 }

@@ -41,7 +41,8 @@
                                 },
                                 success: function (response) {
                                     alert('عملیات موفق')
-                                    document.location.reload(true)
+                                    $('.box_shop ul').remove();
+                                    get_pro_box()
                                 }
                             });
                         });

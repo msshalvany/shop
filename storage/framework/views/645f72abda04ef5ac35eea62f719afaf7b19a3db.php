@@ -20,38 +20,57 @@
         }
         ?>
         <?php if(session()->get('User')): ?>
-            
-      
-        <div class="box_shop">
+        <script>
+            function get_pro_box() { 
+                $.ajaxSetup({
+               headers: {
+                   "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+               },
+           });
+           $.ajax({
+               type: "post",
+               url: "<?php echo e(route('get_pro_box')); ?>",
+               data: {id:"<?php echo e(session()->get('User')->id); ?>"},
+               success: function (response) {
+                   let obj_pro_box = JSON.parse(response)
+                   obj_pro_box.forEach(element => {
+                    $('.box_shop').append(`
+                    <ul class="list-box">
+                        <li>${element.name}</li>
+                        <li><a href='bypage/${element.id}'><img width="120px" height='120px' src="${element.image}" alt=""></a></li>
+                        <li><button onclick="del_pro_box(event)" id="${element.id}" class="del-pro-box">حدف</button></li>
+                    </ul>
+                       `);
+                   });
+                 ;
+               }
+           });
+        }
+       get_pro_box()
+       </script>
+        <div  class="box_shop">
             <div class="cancel_shop_bax">&bigotimes;</div>
-           <?php $__currentLoopData = $box_product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-               <ul class="list-box">
-                    <li><?php echo e($item->name); ?></li>
-                    <li><img width="120px" height='120px' src="<?php echo e($item->image); ?>" alt=""></li>
-                    <li><button id="<?php echo e($item->id); ?>" class="del-pro-box">حدف</button></li>
-               </ul>
-           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-           <?php if(empty($box_product)): ?>
-              <div style="margin: 28px 40px 0 0"> موردی سافت نشد</div>
-           <?php endif; ?>
-           <script>
-                $('.del-pro-box').click(function (e) { 
-                    e.preventDefault();
-                    $.ajax({
-                        type: "POST",
-                        url: "<?php echo e(route('del_pro_box')); ?>",
-                        data: {
-                            user:<?php echo e(session()->get('User')->id); ?>,
-                            pro:e.target.id
-                        },
-                        success: function (response) {
-                           $(`#${e.target.id}`).parent().parent().fadeOut();
-                        }
-                    });
-                });
-           </script>
+            <div class="empty_shop_bax"></div>
         </div>
+        <script>
+            function del_pro_box(e) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo e(route('del_pro_box')); ?>",
+                    data: {
+                    user:<?php echo e(session()->get('User')->id); ?>,
+                    pro:e.target.id
+                    },
+                    success: function (response) {
+                      $('.list-box').remove();
+                      get_pro_box()
+                    }
+                });
+            }
+          
+        </script>
         <?php endif; ?>
+
         <div style="height: 325px" class="login2" id="login2">
             <form method="POST" action="<?php echo e(route('LoginUser')); ?>">
                 <?php echo csrf_field(); ?>
@@ -63,8 +82,9 @@
                     aria-label=""><br>
                 <input type="submit" class="button_login2" value="ارسال نظر">
                 <input type="button" class="button_login2-2" value="cancel">
-                <p style="display: none" class="login_su">با موفقیت وارد شدید</p>
-                <p style="display: none" class="login_er">ایمیل یا رمز عبور صحیح نیست</p>
+                <div style="display: none" class="login_su">با موفقیت وارد شدید</div>
+                <div style="display: none" class="login_er">ایمیل یا رمز عبور صحیح نیست</div>
+                <a class="link-recovery-pasword" href="#">بازیابی رمز عبو</a>
             </form>
             <script>
                 $('.button_login2').click(function(e) {
@@ -109,8 +129,10 @@
         <div class="header_nav_top">
             <div class="header_navbar_top">
                 <ul>
+                    <?php if(!session()->get('User')): ?>
                     <li><a  href="<?php echo e(route('RegesterUser')); ?>" class="loginlink">ثبت نام و عضویت<i class="material-icons-outlined ">person_add</i></a>
                     </li>
+                    <?php endif; ?>
                     <?php if(!session()->get('User')): ?>
                         <li><a id="loginlink2" class="loginlink2"> ورود به حساب کاربری <i class="material-icons-outlined ">account_circle</i></a></li>
                     <?php else: ?>
@@ -133,8 +155,11 @@
                         <div class="header_by1">2</div>
                         <div class="header_by2">سبد خرید<i class="material-icons-outlined">shopping_cart</i></div>
                     <?php endif; ?>
+                    <?php if(!session()->get('User')): ?>
                     <div class="add loginlink"><a href="<?php echo e(route('RegesterUser')); ?>"> ثبت نام و عضویت</a><i style="vertical-align: -8px; margin-right: 6px;"
-                            class="material-icons-outlined ">person_add</i></div>
+                    class="material-icons-outlined ">person_add</i>
+                    </div>
+                    <?php endif; ?>
                 </div>
                 <form action="/search" method="GET">
                     <div class="header_search">

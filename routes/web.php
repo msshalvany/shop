@@ -31,6 +31,7 @@ Route::post('/LogoutUser', [UserController::class, 'logout'])->name('logoutUser'
 Route::get('/RegesterUser', [UserController::class, 'RegesterUser'])->name('RegesterUser');
 Route::post('/StoreUser', [UserController::class, 'store'])->name('StoreUser');
 Route::post('/verify', [UserController::class, 'verify'])->name('verifyUser');
+Route::any('/get_pro_box', [UserController::class, 'get_pro_box'])->name('get_pro_box');
 //---------------------user---------------------//
 
 

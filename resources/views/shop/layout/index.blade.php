@@ -20,38 +20,57 @@
         }
         @endphp
         @if (session()->get('User'))
-            
-      
-        <div class="box_shop">
+        <script>
+            function get_pro_box() { 
+                $.ajaxSetup({
+               headers: {
+                   "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+               },
+           });
+           $.ajax({
+               type: "post",
+               url: "{{ route('get_pro_box') }}",
+               data: {id:"{{session()->get('User')->id}}"},
+               success: function (response) {
+                   let obj_pro_box = JSON.parse(response)
+                   obj_pro_box.forEach(element => {
+                    $('.box_shop').append(`
+                    <ul class="list-box">
+                        <li>${element.name}</li>
+                        <li><a href='bypage/${element.id}'><img width="120px" height='120px' src="${element.image}" alt=""></a></li>
+                        <li><button onclick="del_pro_box(event)" id="${element.id}" class="del-pro-box">حدف</button></li>
+                    </ul>
+                       `);
+                   });
+                 ;
+               }
+           });
+        }
+       get_pro_box()
+       </script>
+        <div  class="box_shop">
             <div class="cancel_shop_bax">&bigotimes;</div>
-           @foreach ($box_product as $item)
-               <ul class="list-box">
-                    <li>{{$item->name}}</li>
-                    <li><img width="120px" height='120px' src="{{$item->image}}" alt=""></li>
-                    <li><button id="{{$item->id}}" class="del-pro-box">حدف</button></li>
-               </ul>
-           @endforeach
-           @empty($box_product)
-              <div style="margin: 28px 40px 0 0"> موردی سافت نشد</div>
-           @endempty
-           <script>
-                $('.del-pro-box').click(function (e) { 
-                    e.preventDefault();
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ route('del_pro_box') }}",
-                        data: {
-                            user:{{session()->get('User')->id}},
-                            pro:e.target.id
-                        },
-                        success: function (response) {
-                           $(`#${e.target.id}`).parent().parent().fadeOut();
-                        }
-                    });
-                });
-           </script>
+            <div class="empty_shop_bax"></div>
         </div>
+        <script>
+            function del_pro_box(e) {
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('del_pro_box') }}",
+                    data: {
+                    user:{{session()->get('User')->id}},
+                    pro:e.target.id
+                    },
+                    success: function (response) {
+                      $('.list-box').remove();
+                      get_pro_box()
+                    }
+                });
+            }
+          
+        </script>
         @endif
+
         <div style="height: 325px" class="login2" id="login2">
             <form method="POST" action="{{ route('LoginUser') }}">
                 @csrf
@@ -63,8 +82,9 @@
                     aria-label=""><br>
                 <input type="submit" class="button_login2" value="ارسال نظر">
                 <input type="button" class="button_login2-2" value="cancel">
-                <p style="display: none" class="login_su">با موفقیت وارد شدید</p>
-                <p style="display: none" class="login_er">ایمیل یا رمز عبور صحیح نیست</p>
+                <div style="display: none" class="login_su">با موفقیت وارد شدید</div>
+                <div style="display: none" class="login_er">ایمیل یا رمز عبور صحیح نیست</div>
+                <a class="link-recovery-pasword" href="#">بازیابی رمز عبو</a>
             </form>
             <script>
                 $('.button_login2').click(function(e) {
@@ -109,8 +129,10 @@
         <div class="header_nav_top">
             <div class="header_navbar_top">
                 <ul>
+                    @if (!session()->get('User'))
                     <li><a  href="{{ route('RegesterUser') }}" class="loginlink">ثبت نام و عضویت<i class="material-icons-outlined ">person_add</i></a>
                     </li>
+                    @endif
                     @if (!session()->get('User'))
                         <li><a id="loginlink2" class="loginlink2"> ورود به حساب کاربری <i class="material-icons-outlined ">account_circle</i></a></li>
                     @else
@@ -133,8 +155,11 @@
                         <div class="header_by1">2</div>
                         <div class="header_by2">سبد خرید<i class="material-icons-outlined">shopping_cart</i></div>
                     @endif
+                    @if (!session()->get('User'))
                     <div class="add loginlink"><a href="{{ route('RegesterUser') }}"> ثبت نام و عضویت</a><i style="vertical-align: -8px; margin-right: 6px;"
-                            class="material-icons-outlined ">person_add</i></div>
+                    class="material-icons-outlined ">person_add</i>
+                    </div>
+                    @endif
                 </div>
                 <form action="/search" method="GET">
                     <div class="header_search">
