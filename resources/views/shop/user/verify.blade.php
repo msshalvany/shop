@@ -1,26 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('shop.layout.index')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="/shop/css/bootstrap.css">
-    <link rel="stylesheet" href="/shop/css/style.css">
-    <script src="/shop/js\jquery.js"></script>
-    <title>Document</title>
+@section('css')
+    <link rel="stylesheet" href="/shop/css\bootstrap.css" />
+    <link rel="stylesheet" href="/shop/css\owl.carousel.min.css" />
+    <link rel="stylesheet" href="/shop/css\owl.theme.default.min.css" />
+    <link rel="stylesheet" href="/shop/css/style.css" />
+    <link rel="stylesheet" href="/shop/css/style_by.css" />
+    <link rel="stylesheet" href="/shop/css/mdia.css" />
+    <link rel="stylesheet" href="/shop/css/mdia_by.css" />
+    <link rel="stylesheet" href="/shop/css/icon.css" />
     <style>
-        body {
-            width: 100%;
-            height: 100%;
-            background: #262626;
-            padding: 10px;
-            border: #ed5314 4px solid;
-        }
+
 
         .login {
+            width: 90%;
             direction: rtl;
+            padding: 40px;
+            margin: 20px auto;
             background: #262626;
             color: #ed5314;
         }
@@ -59,16 +55,16 @@
         }
 
     </style>
-</head>
+@endsection
 
-<body>
+    @section('content')
     <div class="login">
         <p>کد بیامک شده دا وارد کنید</p><br>
         <form class="form-group form_login" action="{{ route('StoreUser') }}" enctype="multipart/form-data"
             method="POST">
             @csrf
             <label>کد :</label>
-            <input type="text" name="code" class="form-control code" value="123" aria-label=""><br>
+            <input type="text" name="code" class="form-control code"  aria-label=""><br>
             <input class="button_add" type="submit" value="ثبت نام">
             <input type="button" class="button_cancel" value="cancel">
         </form>
@@ -89,7 +85,6 @@
                     success: function(response) {
                         if (response==1) {
                             alert("عملیات موفق")
-                            location.href='/'
                         } else {
                             alert("عملیات نا موفق دو باره امتحان کنید")
                         }
@@ -100,6 +95,5 @@
                     location.href='/'
                 });
         </script>
-</body>
-
-</html>
+    </div>    
+@endsection

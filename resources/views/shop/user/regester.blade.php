@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('shop.layout.index')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/shop/css/bootstrap.css">
-    <link rel="stylesheet" href="/shop/css/style.css">
-    <script src="/shop/js\jquery.js"></script>
-    <title>Document</title>
+@section('css')
+    <link rel="stylesheet" href="/shop/css\bootstrap.css" />
+    <link rel="stylesheet" href="/shop/css\owl.carousel.min.css" />
+    <link rel="stylesheet" href="/shop/css\owl.theme.default.min.css" />
+    <link rel="stylesheet" href="/shop/css/style.css" />
+    <link rel="stylesheet" href="/shop/css/style_by.css" />
+    <link rel="stylesheet" href="/shop/css/mdia.css" />
+    <link rel="stylesheet" href="/shop/css/mdia_by.css" />
+    <link rel="stylesheet" href="/shop/css/icon.css" />
     <style>
-        body {
-            width: 100%;
-            height: 100%;
-            background: #262626;
-            padding: 10px;
-            border: #ed5314 4px solid;
-        }
-
         .login {
+            width: 90%;
             direction: rtl;
+            padding: 40px;
+            margin: 20px auto;
             background: #262626;
             color: #ed5314;
         }
@@ -58,21 +53,22 @@
         }
 
     </style>
-</head>
+    <!--================css======================-->
+@endsection
 
-<body>
+@section('content')
     <div class="login">
         <p>مشخصات خود را وراد کنید:</p><br>
         <form class="form-group form_login" action="{{ route('StoreUser') }}" enctype="multipart/form-data"
             method="POST">
             @csrf
             <label>نام کاربری:</label>
-            <input type="text" name="name" class="form-control name" aria-label=""><br>
+            <input type="text" name="name" value="{{old('name')}}" class="form-control name" aria-label=""><br>
             @error('name')
                 <div class="alert alert-danger">نام را صحیح وارد کنید</div>
             @enderror
             <label>ایمیل:</label>
-            <input type="email" name="email" value="a@gmail.com" class="form-control email" aria-label=""><br>
+            <input type="email" name="email" value="{{old('email')}}" class="form-control email" aria-label=""><br>
             @error('email')
                 <div class="alert alert-danger">ایمسل را صحیح وارد کنید</div>
             @enderror
@@ -85,7 +81,7 @@
             @enderror
             <p class="passwordER" style="display: none;margin:10px 45px 10px 0 "> رمز ها یکی نیست </p>
             <label>شماره تماس:</label><br>
-            <input style="width: 50%" type="tel" name="phon" aria-label="" class="form-control phon_number">
+            <input style="width: 50%" type="tel" name="phon" value="{{old('phon')}}" aria-label="" class="form-control phon_number">
             @error('phon')
                 <div class="alert alert-danger">رمز را صحیح وارد کنید</div>
             @enderror
@@ -115,6 +111,8 @@
                 });
             </script>
         </form>
-</body>
-
-</html>
+    </div>    
+@endsection
+@if (session('status'))
+    <script>alert('شما قبلا ثبن نام کرده اید')</script>
+@endif

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\verefy;
 use App\Models\Product;
+use App\Models\product_byed;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Mail;
 
 class bypageController extends Controller
 {
@@ -29,9 +31,9 @@ class bypageController extends Controller
             'name' => 'required|max:55',
             'phon' => 'required|numeric',
             'address' => 'required|max:255',
-        ]);
-           DB::table('product_byed')->insert([
-               "naem"=>$request->name,
+         ]);
+            product_byed::insert([
+               "name"=>$request->name,
                "peoduct_id"=>$id,
                "phon"=>$request->phon,
                "address"=>$request->address,
@@ -39,7 +41,6 @@ class bypageController extends Controller
            ]);
             Product::find($id)->increment('byed');
             return redirect()->back()->with('byed',1);
-
     }
     public function idia($id,Request $request)
     {
@@ -66,5 +67,32 @@ class bypageController extends Controller
         ]);
         $user = User::find($request->user);
         session(['User' => $user]);
+    }
+    public function bybox(Request $request ,$id)
+    {
+        $request->validate([
+            'name' => 'required|max:55',
+            'phon' => 'required|numeric',
+            'address' => 'required|max:255',
+         ]);
+        $products = json_decode(User::find($request->id)->box_product_id);
+        $productsid = [];
+        foreach ($products as $item) {
+            $productsid [] = $item->id;
+        }
+        foreach ($productsid as $item) {
+            product_byed::insert([
+                "name"=>$request->name,
+                "peoduct_id"=>$item,
+                "phon"=>$request->phon,
+                "address"=>$request->address,
+                "city"=>$request->city
+            ]);
+            Product::find($item)->increment('byed');
+        }
+        User::find($request->id)->update([
+            'box_product_id'=> '[]'
+        ]);
+        return redirect()->back()->with('byed',1);
     }
 }

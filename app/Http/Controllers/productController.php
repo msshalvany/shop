@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\product_byed;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -156,7 +157,7 @@ class productController extends Controller
     }
     public function byedList()
     {
-        $product = DB::table('product_byed')->paginate(8);
+        $product = product_byed::paginate(8);
         return view('admin.products.byed',['product'=>$product]);
     }
     public function search(Request $request)
@@ -210,5 +211,19 @@ class productController extends Controller
             }
             $i++;
        }
+    }
+    public function boxall(Request $request)
+    {
+        $box_product =  json_decode(User::find($request->id)->box_product_id);
+        $products= [];
+        foreach ($box_product as $item) {
+            $products[]=  Product::find($item->id);
+        }
+        return view('shop.boxall',["products"=>$products]);
+    }
+    public function del_product_box($Product)
+    {
+        product_byed::where('id',$Product )->delete();
+        return redirect()->back();
     }
 }

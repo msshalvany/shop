@@ -59,7 +59,7 @@
                 @endif
                     @foreach ($product as $item)
                         <tr>
-                            <td>{{$item->naem }}</td>
+                            <td>{{$item->name }}</td>
                             <td>{{$item->phon }}</td>
                             <td>{{$item->address }}</td>
                             <td>
@@ -67,7 +67,7 @@
                                     <button class="btn btn-danger btn-xs">مشاهده محصول</button>
                                 </form>
                             </td>
-                            <form action="{{ route('Product.destroy', ['Product'=>$item->id])}}" method="POST">
+                            <form action="{{ route('del_product_box', ['Product'=>$item->id])}}" method="POST">
                                 @csrf       
                                 @method('DELETE')
                                 <td><button class="btn btn-danger btn-xs"><i class="icon-trash "></i></button></td>

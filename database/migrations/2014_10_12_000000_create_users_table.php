@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('image');
             $table->integer('phon')->nullable();
             $table->string('email');
-            $table->string('box_product_id')->default('[]');;
+            $table->text('box_product_id')->default('[]');;
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

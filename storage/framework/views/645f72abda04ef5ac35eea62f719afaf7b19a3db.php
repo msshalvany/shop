@@ -50,7 +50,7 @@
        </script>
         <div  class="box_shop">
             <div class="cancel_shop_bax">&bigotimes;</div>
-            <div class="empty_shop_bax"></div>
+            <button class="add_box_all"><a  href="<?php echo e(route('boxall', ['id'=>session()->get('User')->id])); ?>">تصفیه تمام محصولات</a></button>
         </div>
         <script>
             function del_pro_box(e) {
@@ -84,7 +84,7 @@
                 <input type="button" class="button_login2-2" value="cancel">
                 <div style="display: none" class="login_su">با موفقیت وارد شدید</div>
                 <div style="display: none" class="login_er">ایمیل یا رمز عبور صحیح نیست</div>
-                <a class="link-recovery-pasword" href="#">بازیابی رمز عبو</a>
+                <a class="link-recovery-pasword" href="<?php echo e(route('resetassword')); ?>">بازیابی رمز عبو</a>
             </form>
             <script>
                 $('.button_login2').click(function(e) {

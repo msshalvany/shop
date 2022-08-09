@@ -180,19 +180,6 @@ $(document).ready(function () {
         });
     });
 
-    $(".button_add").click(function () {
-        var value1 = $(".pass").val();
-        var value2 = $(".email").val();
-        var value3 = $(".phon_number").val();
-        if (value1 === "" || value2 === "" || value3 === "") {
-            $(".mask").fadeIn();
-            $(".login").fadeIn();
-        } else {
-            $(".mask").fadeOut();
-            $(".login").fadeOut();
-        }
-    });
-
     $(".button_add2").click(function () {
         var value1 = $(".name2").val();
         var value2 = $(".addres2").val();
